@@ -167,14 +167,15 @@ function processContains(item,list,callback) {
 function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
     const removedups = (list) => { 
-    let object = {};
-    return list.filter((item)=> { 
-          return object.hasOwnProperty(item) ? false : (object[item] = true);
-  //  var newlist=[];
-    });
-   }
+      let object = {};
+      return list.filter((item)=> { 
+            return object.hasOwnProperty(item) ? false : (object[item] = true);
+    //  var newlist=[]; 
+      });
+
+    }
     return callback(removedups(list));
-  }
+}
  
 
 
@@ -199,7 +200,8 @@ function processDuplicateFree(list, callback) {
 function getFullNames(runners) {
   /* CODE HERE */
   let object = [];
-  runners.forEach(runner => console.log(runner));
+  runners.forEach(runner => object.push(`${runner.last_name}, ${runner.first_name}`));
+  return object;
 }
 
 /**
@@ -216,6 +218,9 @@ function getFullNames(runners) {
 */
 function firstNamesAllCaps(runners) {
   /* CODE HERE */
+  let firstname = [];
+  runners.map(runner => firstname.push(`${runner.first_name.toUpperCase()}`));
+  return firstname;
 }
 
 /**
@@ -231,8 +236,12 @@ function firstNamesAllCaps(runners) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners,tShirtSize) {
   /* CODE HERE */
+  let tshirtsize=[];
+  runners.filter(runner => tShirtSize == `${runner.shirt_size}` ? tshirtsize.push(runner) : null);
+  // console.log(tshirtsize);
+  return tshirtsize;
 }
 
 /**
@@ -245,8 +254,12 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
+function tallyUpDonations(runners) {
   /* CODE HERE */
+let donationlist=[]
+const reducer = (accumulator, currentValue) => accumulator + currentValue
+runners.map(runner => donationlist.push(runner.donation));
+return donationlist.reduce(reducer,0) 
 }
 
 /////////////// CLOSURES ///////////////
@@ -267,10 +280,15 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
-  }
+ 
+  const counter = () => { 
+   let count = 0;
+   return function() {
+     count = count++;
+     return count;
+    }
+  };
+    return counterMaker(counter());
   // BROKEN CODE ENDS
 }
 
