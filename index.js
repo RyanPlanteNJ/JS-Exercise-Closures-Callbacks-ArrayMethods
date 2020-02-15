@@ -140,8 +140,9 @@ function processProduct(num1,num2,callback) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
+function processContains(item,list,callback) {
   /* CODE HERE */
+  return callback(list.indexOf(item)>-1);
 }
 
 /**
@@ -163,9 +164,19 @@ function processContains(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
+function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
-}
+    const removedups = (list) => { 
+    var object = {};
+    return list.filter((item)=> { 
+          return object.hasOwnProperty(item) ? false : (object[item] = true);
+  //  var newlist=[];
+    });
+   }
+    return callback(removedups(list));
+  }
+ 
+
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -185,8 +196,9 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners) {
   /* CODE HERE */
+  runners.forEach(runner => console.log(runner));
 }
 
 /**
@@ -201,7 +213,7 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners) {
   /* CODE HERE */
 }
 
