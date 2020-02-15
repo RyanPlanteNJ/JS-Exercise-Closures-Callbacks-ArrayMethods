@@ -167,7 +167,7 @@ function processContains(item,list,callback) {
 function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
     const removedups = (list) => { 
-    var object = {};
+    let object = {};
     return list.filter((item)=> { 
           return object.hasOwnProperty(item) ? false : (object[item] = true);
   //  var newlist=[];
@@ -198,6 +198,7 @@ function processDuplicateFree(list, callback) {
 */
 function getFullNames(runners) {
   /* CODE HERE */
+  let object = [];
   runners.forEach(runner => console.log(runner));
 }
 
