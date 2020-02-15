@@ -284,11 +284,10 @@ function counterMaker() {
   const counter = () => { 
    let count = 0;
    return function() {
-     count = count++;
-     return count;
+     return count++;
     }
   };
-    return counterMaker(counter());
+    return counter();
   // BROKEN CODE ENDS
 }
 
@@ -312,10 +311,18 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
+function counterMakerWithLimit(maxvalue) {
   /* CODE HERE */
+     let count = 0;
+    return function () {
+      if (count <= maxvalue) {
+        return count++;
+      } else{
+        count = 0;
+      return count++
+    }
+  };
 }
-
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
